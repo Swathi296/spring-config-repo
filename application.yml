@@ -1,12 +1,5 @@
 spring:
   application:
     name: config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Swathi296/spring-config-repo
-          clone-on-start: true
 server:
   port: 8888
-debug: true
