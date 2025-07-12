@@ -26,7 +26,7 @@ resilience4j:
   retry:
     instances:
       userService:
-        max-attempts: 3
+        max-attempts: 2
         wait-duration: 1s
 
   timelimiter:
