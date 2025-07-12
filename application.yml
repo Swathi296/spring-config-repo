@@ -1,5 +1,2 @@
-spring:
-  application:
-    name: config-server
-server:
-  port: 8888
+global:
+  message: "This is a global config for all services"
