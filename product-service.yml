@@ -33,6 +33,10 @@ info:
   app:
     name: product-service
     version: 1.0
+logging:
+  level:
+    root: info
+    com.example.productService: debug
 
 product:
   message: "Hello from product-service development profile!"
