@@ -33,5 +33,10 @@ management:
 logging:
   pattern:
     level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"
-
+sleuth:
+    enabled: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.actuate.autoconfigure.tracing.OpenTelemetryAutoConfiguration
+      
 message: "Welcome to Product Service"
