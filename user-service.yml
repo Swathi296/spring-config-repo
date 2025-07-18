@@ -9,10 +9,13 @@ spring:
     url: jdbc:mysql://localhost:3306/userdb
     username: root
     password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 eureka:
   client:
@@ -20,36 +23,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
-
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      productService:
-        registerHealthIndicator: true
-        slidingWindowSize: 5
-        minimumNumberOfCalls: 3
-        failureRateThreshold: 50
-        waitDurationInOpenState: 5s
-
-  retry:
-    instances:
-      productService:
-        max-attempts: 2
-        wait-duration: 1s
 
 management:
   tracing:
-    enabled: true
     sampling:
       probability: 1.0
-      propagation:
-      type: b3
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
@@ -57,10 +35,5 @@ management:
 logging:
   pattern:
     level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"
-sleuth:
-    enabled: true
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.actuate.autoconfigure.tracing.OpenTelemetryAutoConfiguration
-      
-message: "Hello from Config Server for UserService"
+
+message: "Welcome to User Service"
